@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listener Demo</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 100px;
+      background-color: lightgray;
+      margin-top: 10px;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<h2 id="title">Event Listener Demo</h2>
+
+<!-- Click and Double Click -->
+<button id="clickBtn">Click Me</button>
+<button id="dblClickBtn">Double Click Me</button>
+
+<!-- Mouse Events -->
+<div id="box">Hover or Move Mouse Here</div>
+
+<!-- Keyboard Events -->
+<input type="text" id="keyInput" placeholder="Type something and press Enter">
+
+<!-- Form Events -->
+<form id="sampleForm">
+  <input type="text" id="nameField" placeholder="Your Name" required>
+  <button type="submit">Submit</button>
+</form>
+
+<!-- SCRIPT SECTION -->
+<script>
+  // Click Event
+  document.getElementById("clickBtn").addEventListener("click", function () {
+    alert("Button was clicked!");
+  });
+
+  // Double Click Event
+  document.getElementById("dblClickBtn").addEventListener("dblclick", function () {
+    alert("Button was double-clicked!");
+  });
+
+  // Mouse Events
+  const box = document.getElementById("box");
+
+  box.addEventListener("mouseover", function () {
+    alert("Mouse is over the box!");
+  });
+
+  box.addEventListener("mousemove", function () {
+    console.log("Mouse is moving inside the box.");
+  });
+
+  // Keyboard Event - Trigger alert only on Enter
+  document.getElementById("keyInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevent form submission if inside a form
+      alert(`You pressed Enter after typing: ${e.target.value}`);
+    }
+  });
+
+  // Form Submit
+  document.getElementById("sampleForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent actual form submission
+    const name = document.getElementById("nameField").value;
+    alert(`Form submitted! Name: ${name}`);
+  });
+</script>
+
+</body>
+</html>
